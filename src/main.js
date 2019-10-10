@@ -14,6 +14,7 @@ Vue.http.options.root = 'http://localhost:8080';
 
 Vue.config.productionTip = false
 
+
 new Vue({
   vuetify,
   router,

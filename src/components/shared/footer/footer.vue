@@ -1,7 +1,7 @@
 <template>
   <v-footer
     color="primary lighten-1"
-    padless fixed="true"
+    padless fixed
   >
     <v-row
       justify="center"

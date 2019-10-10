@@ -3,5 +3,6 @@ import NewsEdit from './components/news-edit/NewsEdit.vue'
 
 export const routes = [
     {path: '', component: NewsList},
-    {path: '/editar', component: NewsEdit}
+    {path: '/editar', component: NewsEdit},
+    {path: '/editar/:id', component: NewsEdit}
 ]
