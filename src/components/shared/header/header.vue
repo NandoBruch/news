@@ -3,17 +3,12 @@
     <v-toolbar
       dark
       prominent
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+      class="gradient"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Vuetify</v-toolbar-title>
+      <v-toolbar-title class="mb-9">Brüch News</v-toolbar-title>
 
       <div class="flex-grow-1"></div>
 
-      <v-btn icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
     </v-toolbar>
   </div>
 </template>
@@ -26,4 +21,8 @@ export default {
     }
 }
 </script>
-<style></style>
+<style>
+.gradient{
+  background-image: linear-gradient(left,#ED4264,rgb(223, 126, 61));
+}
+</style>

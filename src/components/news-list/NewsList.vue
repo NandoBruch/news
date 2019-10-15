@@ -1,17 +1,50 @@
 <template>
-    <router-link to="/editar">
-    <v-btn  class="registrar" fab color="pink">
-        <v-icon color="white">mdi-plus</v-icon>      
+    <v-container>
+         <v-row justify="left" align="center" align-content="left">
+             <v-col v-for="noticia in noticias" cols="12" sm="4">
+                    <painel 
+                    :titulo="noticia.titulo"
+                    :data="noticia.data"
+                    :resumo="noticia.resumo"
+                    :imagem="noticia.imagem"
+                    :ad="noticia.id"
+                    >
+                    </painel>
+              </v-col>
+        </v-row>
+    <router-link :to="{ name: 'cadastra' }">
+        <v-btn fab color="pink" fixed bottom right  style="bottom:130px">
+            <v-icon color="white">mdi-plus</v-icon>      
         </v-btn>
     </router-link>
+    </v-container>
 </template>
 <script>
+import NoticiaService from '../../domain/NoticiaService.js'
+import Painel from '../shared/painel/Painel.vue'
+
+export default {
+    components: {
+        "painel" : Painel
+    },
+    data(){
+        return{
+            noticias: []
+        }
+    },
+    created(){
+    this.service = new NoticiaService(this.$resource);
+    this.service.lista()
+    .then(noticias => this.noticias = noticias)
+    .catch(err => console.log(err))
+  },
+  updated(){
+      this.service.lista()
+    .then(noticias => this.noticias = noticias)
+    .catch(err => console.log(err))
+  }
+
+}
 </script>
 <style>
-.registrar {
-    position: absolute;
-    bottom: 130px;
-    right: 20px;
-    z-index: 10;
-}
 </style>
