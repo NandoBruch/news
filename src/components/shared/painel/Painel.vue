@@ -9,7 +9,7 @@
     >
       <v-card-title>{{titulo}}</v-card-title>
     </v-img>
-    <v-card-subtitle class="ps-3"> {{ formataData }} </v-card-subtitle>
+    <v-card-subtitle > {{ formataData }} </v-card-subtitle>
     <v-card-text class="text--primary">
       <div>{{resumo}}</div>
     

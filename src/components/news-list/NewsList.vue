@@ -1,7 +1,7 @@
 <template>
     <v-container>
          <v-row justify="left" align="center" align-content="left">
-             <v-col v-for="noticia in noticias" cols="12" sm="4">
+             <v-col v-for="noticia of noticias" cols="12" sm="4">
                     <painel 
                     :titulo="noticia.titulo"
                     :data="noticia.data"
@@ -13,7 +13,7 @@
               </v-col>
         </v-row>
     <router-link :to="{ name: 'cadastra' }">
-        <v-btn fab color="pink" fixed bottom right  style="bottom:130px">
+        <v-btn fab color="pink" fixed bottom right  style="bottom:50px">
             <v-icon color="white">mdi-plus</v-icon>      
         </v-btn>
     </router-link>
@@ -32,16 +32,15 @@ export default {
             noticias: []
         }
     },
-    created(){
+     created(){
+        
     this.service = new NoticiaService(this.$resource);
     this.service.lista()
     .then(noticias => this.noticias = noticias)
     .catch(err => console.log(err))
   },
   updated(){
-      this.service.lista()
-    .then(noticias => this.noticias = noticias)
-    .catch(err => console.log(err))
+     
   }
 
 }

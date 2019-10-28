@@ -10,7 +10,9 @@
       
     >
         </v-img>
-        
+        <div data-editable data-name=heading>
+        <h1>{{ noticia.titulo }}</h1>
+        </div>
         <v-text-field   v-model="noticia.imagem" class="mx-3" label="URL"></v-text-field>
         <v-container fluid>
           
@@ -42,11 +44,11 @@
             <v-btn class="ma-2" tile outlined color="error">
               <v-icon left>mdi-arrow-left</v-icon> Voltar
               </v-btn>
-            
+             </router-link>
               <v-btn class="ma-2" tile outlined color="primary" @click="grava()">
               <v-icon left>mdi-pencil</v-icon> Aplicar
               </v-btn>
-              </router-link>
+             
           </v-row>
          </v-container>
       </v-card>
@@ -60,6 +62,7 @@
   import NewsList from '../news-list/NewsList.vue'
   import Noticia from '../../domain/Noticia.js'
   import NoticiaService from '../../domain/NoticiaService.js'
+  import $ from 'jquery';
 
   export default {
     components: {
@@ -72,6 +75,8 @@
       }
     },
     created(){
+      
+      this.editor = ContentTools.EditorApp.get();
       this.service = new NoticiaService(this.$resource);
       if(this.id){
       this.service.busca(this.id)
@@ -80,12 +85,16 @@
       }
       
     },
+    mounted(){
+      this.editor.init('*[data-editable]', 'data-name');
+    },
       methods:{
         grava(){
-          
+         
           this.service.adiciona(this.noticia)
-          .then(console.log('sucesso'))
+          .then(()=> this.$router.push({ name: 'home' }))
           .catch(err => console.log(err))
+          this.editor.destroy();
         }
       }
 }

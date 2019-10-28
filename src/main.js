@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import { routes } from './routes.js';
+
 import './assets/content-tools/content-tools.min.js'
 import './assets/content-tools/content-tools.min.css'
 
